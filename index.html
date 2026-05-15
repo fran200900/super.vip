@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SuperBancas - Aqui está a melhor cotação do mercado</title>
-  <meta name="description" content="A SuperBancas vem com cotação de R$9.600. Cadastre-se agora na SuperBancas, ganhe bônus e acompanhe resultados em tempo real.">
+  <meta name="description" content="A SuperBancas é confiável para apostas esportivas e jogos ao vivo. Cadastre-se na SuperBancas, ganhe bônus e acompanhe resultados em tempo real.">
   <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://superbancas.com.br/">
   <link rel="alternate" hreflang="pt-BR" href="https://superbancas.com.br/">
 
-  <!-- === IMAGEM PARA PESQUISAS DO GOOGLE E REDES SOCIAIS === -->
+  <!-- Open Graph -->
   <meta property="og:title" content="SuperBancas - Melhor Cotação do Mercado">
   <meta property="og:description" content="Aposte com segurança na SuperBancas. Plataforma rápida, confiável e com as melhores odds.">
   <meta property="og:url" content="https://superbancas.com.br/">
@@ -20,7 +20,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="SuperBancas - Apostas Esportivas">
 
-  <!-- Favicon e ícone para Google -->
+  <!-- Favicon -->
   <link rel="icon" href="superbancas.png" type="image/png">
   <link rel="apple-touch-icon" href="superbancas.png">
   <link rel="shortcut icon" href="superbancas.png" type="image/png">
@@ -30,9 +30,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://app.superbancas.club" crossorigin>
 
+  <link rel="preload" as="image" href="banner.png" fetchpriority="high">
   <link rel="preload" as="image" href="superbancas.png" fetchpriority="high">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-70QZPPYYF7"></script>
@@ -57,43 +58,45 @@
       height: 100dvh;
     }
 
-    .section { height: 100dvh; position: relative; }
-
-    /* === VIDEO OVERLAY === */
-    #video-overlay {
+    /* === BANNER OVERLAY (Tela Cheia) === */
+    #banner-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100dvh;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.92);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 9999;
       opacity: 1;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.5s ease;
     }
 
-    #video-overlay.hidden {
+    #banner-overlay.hidden {
       opacity: 0;
       pointer-events: none;
     }
 
-    #promo-video {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-      border-radius: 8px;
+    .banner-container {
+      position: relative;
+      max-width: 95%;
+      max-height: 90%;
     }
 
-    .close-video-btn {
+    #promo-banner {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
+    }
+
+    .close-banner-btn {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      top: -15px;
+      right: -15px;
+      background: #ff0000;
       color: white;
       width: 50px;
       height: 50px;
@@ -101,16 +104,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 28px;
+      font-size: 32px;
       cursor: pointer;
-      border: 2px solid #fff;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
       z-index: 10000;
       transition: all 0.3s ease;
     }
 
-    .close-video-btn:hover {
-      background: #ff0000;
+    .close-banner-btn:hover {
       transform: scale(1.1);
+      background: #cc0000;
+    }
+
+    /* Conteúdo principal */
+    .section {
+      height: 100dvh;
+      position: relative;
     }
 
     .iframe-placeholder {
@@ -140,11 +150,6 @@
       to { transform: rotate(360deg); }
     }
 
-    .iframe-placeholder.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
     iframe {
       position: absolute;
       inset: 0;
@@ -157,22 +162,23 @@
 </head>
 <body>
 
-  <!-- VIDEO PROMOCIONAL -->
-  <div id="video-overlay">
-    <div class="close-video-btn" id="close-video" title="Fechar vídeo">×</div>
-    <video id="promo-video" autoplay muted playsinline>
-      <source src="video-super.mp4" type="video/mp4">
-      Seu navegador não suporta o vídeo.
-    </video>
+  <!-- BANNER EM TELA CHEIA -->
+  <div id="banner-overlay">
+    <div class="banner-container">
+      <div class="close-banner-btn" id="close-banner" title="Fechar">×</div>
+      <img id="promo-banner" src="banner.png" alt="SuperBancas - Promoção">
+    </div>
   </div>
 
   <main>
-    <div id="aguia" class="section">
+    <div class="section">
+      <!-- Placeholder -->
       <div id="placeholder" class="iframe-placeholder">
         <div class="spinner"></div>
         <div>Carregando SuperBancas...</div>
       </div>
 
+      <!-- Iframe -->
       <iframe 
         id="main-iframe"
         src="https://app.superbancas.club/pr/3IMRdWnG"
@@ -186,7 +192,7 @@
   </main>
 
   <!-- Botão WhatsApp -->
-  <div class="fab-container">
+  <div class="fab-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
     <a href="https://wa.me/5567981530813?text=Ol%C3%A1%20suporte%2C%20vim%20pelo%20site%20e%20preciso%20de%20ajuda" 
        target="_blank" rel="noopener noreferrer"
        class="fab-main" aria-label="Falar com suporte no WhatsApp">
@@ -196,36 +202,43 @@
   </div>
 
   <script>
-    // ... (seu script permanece igual)
-    const videoOverlay = document.getElementById('video-overlay');
-    const promoVideo = document.getElementById('promo-video');
-    const closeBtn = document.getElementById('close-video');
+    const bannerOverlay = document.getElementById('banner-overlay');
+    const closeBtn = document.getElementById('close-banner');
     const iframe = document.getElementById('main-iframe');
     const placeholder = document.getElementById('placeholder');
 
-    function closeVideo() {
-      videoOverlay.classList.add('hidden');
-      promoVideo.pause();
+    // Fechar banner
+    function closeBanner() {
+      bannerOverlay.classList.add('hidden');
       setTimeout(() => {
-        videoOverlay.style.display = 'none';
+        bannerOverlay.style.display = 'none';
       }, 600);
     }
 
-    closeBtn.addEventListener('click', closeVideo);
-    promoVideo.addEventListener('ended', () => setTimeout(closeVideo, 800));
+    closeBtn.addEventListener('click', closeBanner);
 
+    // Fechar com tecla ESC
     document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape" && !videoOverlay.classList.contains('hidden')) closeVideo();
+      if (e.key === "Escape" && !bannerOverlay.classList.contains('hidden')) {
+        closeBanner();
+      }
     });
 
+    // Carregamento do iframe
     iframe.addEventListener('load', () => {
       placeholder.classList.add('hidden');
-      setTimeout(() => placeholder.style.display = 'none', 400);
+      setTimeout(() => {
+        placeholder.style.display = 'none';
+      }, 400);
     });
 
+    // Fallback
     setTimeout(() => {
-      if (!placeholder.classList.contains('hidden')) placeholder.classList.add('hidden');
+      if (!placeholder.classList.contains('hidden')) {
+        placeholder.classList.add('hidden');
+      }
     }, 8000);
   </script>
+
 </body>
 </html>
