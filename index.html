@@ -1,159 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SuperBancas - Aqui está a melhor cotação do mercado</title>
+  <meta name="description" content="A SuperBancas vem com cotação de R$9.600. Cadastre-se agora na SuperBancas, ganhe bônus e acompanhe resultados em tempo real.">
+  <meta name="robots" content="index, follow">
 
-<title>SuperBancas - Vem ai a melhor cotação do mercado</title>
+  <link rel="canonical" href="https://superbancas.com.br/">
+  <link rel="alternate" hreflang="pt-BR" href="https://superbancas.com.br/">
 
-<!-- SEO PRINCIPAL -->
-<meta name="description" content="Plataforma em desenvolvimento com a melhor cotação do mercado. Sistema seguro, estável e transparente. Novidade em breve. Aguardem.">
-<meta name="keywords" content="plataforma segura, melhor cotação do mercado, banca confiável, sistema estável, milhar, centena">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://seusite.com">
+  <!-- === IMAGEM PARA PESQUISAS DO GOOGLE E REDES SOCIAIS === -->
+  <meta property="og:title" content="SuperBancas - Melhor Cotação do Mercado">
+  <meta property="og:description" content="Aposte com segurança na SuperBancas. Plataforma rápida, confiável e com as melhores odds.">
+  <meta property="og:url" content="https://superbancas.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://superbancas.com.br/superbancas.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="SuperBancas - Apostas Esportivas">
 
-<!-- OPEN GRAPH (WhatsApp / Facebook) -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="Novidade em Breve | Melhor Cotação do Mercado">
-<meta property="og:description" content="Plataforma segura, estável e transparente com a melhor cotação do mercado. Em desenvolvimento. Aguardem.">
-<meta property="og:image" content="https://seusite.com/imagem-preview.jpg">
-<meta property="og:url" content="https://seusite.com">
-<meta property="og:site_name" content="SuperBancas">
+  <!-- Favicon e ícone para Google -->
+  <link rel="icon" href="superbancas.png" type="image/png">
+  <link rel="apple-touch-icon" href="superbancas.png">
+  <link rel="shortcut icon" href="superbancas.png" type="image/png">
 
-<!-- TWITTER -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Novidade em Breve | Melhor Cotação do Mercado">
-<meta name="twitter:description" content="Plataforma segura e transparente com a melhor cotação do mercado. Em breve.">
-<meta name="twitter:image" content="https://seusite.com/imagem-preview.jpg">
+  <!-- Preconnects e Preloads -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://app.superbancas.club" crossorigin>
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
-    }
+  <link rel="preload" as="image" href="superbancas.png" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-70QZPPYYF7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-70QZPPYYF7');
+  </script>
+
+  <style>
+    :root { --primary: #25D366; }
+
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
-        width: 100vw;
-        min-height: 100vh;
-        background-color: #000;
-        color: #fff;
+      font-family: 'Roboto', system-ui, sans-serif;
+      margin: 0;
+      background: #f4f6f8;
+      color: #1a1a1a;
+      overflow: hidden;
+      height: 100dvh;
     }
 
-    .quadro {
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
+    .section { height: 100dvh; position: relative; }
+
+    /* === VIDEO OVERLAY === */
+    #video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100dvh;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.6s ease;
     }
 
-    .atencao {
-        font-size: 48px;
-        font-weight: bold;
-        color: red;
-        text-transform: uppercase;
-        animation: piscar 1s infinite;
-        margin-bottom: 20px;
+    #video-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    @keyframes piscar {
-        0% { opacity: 1; }
-        50% { opacity: 0; }
-        100% { opacity: 1; }
+    #promo-video {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+      border-radius: 8px;
     }
 
-    .texto {
-        font-size: 22px;
-        line-height: 1.6;
-        max-width: 900px;
+    .close-video-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      cursor: pointer;
+      border: 2px solid #fff;
+      z-index: 10000;
+      transition: all 0.3s ease;
     }
 
-    .seo {
-        max-width: 900px;
-        margin: 40px auto;
-        padding: 20px;
-        font-size: 16px;
-        line-height: 1.7;
-        color: #ccc;
+    .close-video-btn:hover {
+      background: #ff0000;
+      transform: scale(1.1);
     }
 
-    .seo h1 {
-        color: #fff;
-        font-size: 26px;
-        margin-bottom: 15px;
+    .iframe-placeholder {
+      position: absolute;
+      inset: 0;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: #fff;
+      z-index: 2;
+      transition: opacity 0.4s ease;
     }
 
-    .seo p {
-        margin-bottom: 15px;
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 5px solid rgba(255,255,255,0.2);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 16px;
     }
 
-    .saiba-mais {
-        position: fixed;
-        bottom: 15px;
-        right: 15px;
-        font-size: 14px;
-        color: #00ffcc;
-        cursor: pointer;
-        text-decoration: none;
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
 
-    .saiba-mais:hover {
-        text-decoration: underline;
+    .iframe-placeholder.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
-</style>
+
+    iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: 1;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- BLOCO PRINCIPAL -->
-<div class="quadro">
-    <div class="atencao">ATENÇÃO</div>
+  <!-- VIDEO PROMOCIONAL -->
+  <div id="video-overlay">
+    <div class="close-video-btn" id="close-video" title="Fechar vídeo">×</div>
+    <video id="promo-video" autoplay muted playsinline>
+      <source src="video-super.mp4" type="video/mp4">
+      Seu navegador não suporta o vídeo.
+    </video>
+  </div>
 
-    <div class="texto">
-        Novidade em breve, banca pagando <strong>9.600 na milhar</strong> e
-        <strong>960 na centena</strong> a cada <strong>1 real</strong>.
-        <br>
-        <strong>Não perca tempo!</strong>
+  <main>
+    <div id="aguia" class="section">
+      <div id="placeholder" class="iframe-placeholder">
+        <div class="spinner"></div>
+        <div>Carregando SuperBancas...</div>
+      </div>
+
+      <iframe 
+        id="main-iframe"
+        src="https://app.superbancas.club/pr/3IMRdWnG"
+        fetchpriority="high"
+        referrerpolicy="no-referrer-when-downgrade"
+        allow="clipboard-read; clipboard-write; fullscreen; autoplay; encrypted-media"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-clipboard-read allow-clipboard-write"
+        title="Plataforma SuperBancas">
+      </iframe>
     </div>
-</div>
+  </main>
 
-<!-- TEXTO SEO PARA RANQUEAMENTO -->
-<section class="seo">
-    <h1>Plataforma em Desenvolvimento com a Melhor Cotação do Mercado</h1>
+  <!-- Botão WhatsApp -->
+  <div class="fab-container">
+    <a href="https://wa.me/5567981530813?text=Ol%C3%A1%20suporte%2C%20vim%20pelo%20site%20e%20preciso%20de%20ajuda" 
+       target="_blank" rel="noopener noreferrer"
+       class="fab-main" aria-label="Falar com suporte no WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+      <span class="fab-label">Suporte</span>
+    </a>
+  </div>
 
-    <p>
-        Estamos desenvolvendo uma plataforma moderna e segura, criada para oferecer a melhor cotação do mercado,
-        com foco total em transparência, estabilidade e confiança.
-    </p>
+  <script>
+    // ... (seu script permanece igual)
+    const videoOverlay = document.getElementById('video-overlay');
+    const promoVideo = document.getElementById('promo-video');
+    const closeBtn = document.getElementById('close-video');
+    const iframe = document.getElementById('main-iframe');
+    const placeholder = document.getElementById('placeholder');
 
-    <p>
-        Nosso sistema está sendo estruturado com tecnologia atualizada, garantindo acesso rápido,
-        ambiente seguro e uma experiência estável para todos os usuários.
-    </p>
+    function closeVideo() {
+      videoOverlay.classList.add('hidden');
+      promoVideo.pause();
+      setTimeout(() => {
+        videoOverlay.style.display = 'none';
+      }, 600);
+    }
 
-    <p>
-        Em breve, você terá acesso a uma banca confiável, com cotações competitivas,
-        suporte dedicado e um ambiente pensado para quem busca segurança e credibilidade.
-    </p>
+    closeBtn.addEventListener('click', closeVideo);
+    promoVideo.addEventListener('ended', () => setTimeout(closeVideo, 800));
 
-    <p>
-        Este site está em fase de desenvolvimento para trazer a melhor cotação do mercado,
-        uma plataforma segura, estável e transparente. <strong>AGUARDEM.</strong>
-    </p>
-</section>
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "Escape" && !videoOverlay.classList.contains('hidden')) closeVideo();
+    });
 
-<!-- BOTÃO WHATSAPP -->
-<a class="saiba-mais"
-href="https://wa.me/558394073892?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20a%20SuperBancas.%20Como%20posso%20participar%20e%20receber%20novidades%3F"
-target="_blank"
-rel="noopener noreferrer">
- Saiba mais clicando aqui
-</a>
+    iframe.addEventListener('load', () => {
+      placeholder.classList.add('hidden');
+      setTimeout(() => placeholder.style.display = 'none', 400);
+    });
 
+    setTimeout(() => {
+      if (!placeholder.classList.contains('hidden')) placeholder.classList.add('hidden');
+    }, 8000);
+  </script>
 </body>
 </html>
